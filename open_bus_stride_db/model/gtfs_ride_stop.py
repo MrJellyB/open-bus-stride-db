@@ -14,7 +14,7 @@ class GtfsRideStop(Base):
         """)},
     )
 
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    id = sqlalchemy.Column(sqlalchemy.BigInteger, primary_key=True)
     gtfs_stop_id = sqlalchemy.Column(
         sqlalchemy.Integer, sqlalchemy.ForeignKey('gtfs_stop.id'), index=True,
         **info("The related [[gtfs_stop]].")

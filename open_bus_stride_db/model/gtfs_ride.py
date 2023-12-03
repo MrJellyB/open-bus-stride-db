@@ -30,14 +30,14 @@ class GtfsRide(Base):
         primaryjoin="GtfsRide.id==GtfsRideStop.gtfs_ride_id"
     )
     first_gtfs_ride_stop_id = sqlalchemy.Column(
-        sqlalchemy.Integer, sqlalchemy.ForeignKey('gtfs_ride_stop.id'),
+        sqlalchemy.BigInteger, sqlalchemy.ForeignKey('gtfs_ride_stop.id'),
         **info("""
             The first [[gtfs_ride_stop]] along this ride. 
             Populated from [[stride-etl-gtfs-update-ride-aggregations]].
         """)
     )
     last_gtfs_ride_stop_id = sqlalchemy.Column(
-        sqlalchemy.Integer, sqlalchemy.ForeignKey('gtfs_ride_stop.id'),
+        sqlalchemy.BigInteger, sqlalchemy.ForeignKey('gtfs_ride_stop.id'),
         **info("""
             The last [[gtfs_ride_stop]] along this ride. 
             Populated from [[stride-etl-gtfs-update-ride-aggregations]].
