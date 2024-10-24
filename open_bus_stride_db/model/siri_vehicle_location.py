@@ -20,7 +20,7 @@ class SiriVehicleLocation(Base):
         foreign_keys=[siri_snapshot_id]
     )
     siri_ride_stop_id = sqlalchemy.Column(
-        sqlalchemy.Integer, sqlalchemy.ForeignKey('siri_ride_stop.id'), index=True,
+        sqlalchemy.BigInteger, sqlalchemy.ForeignKey('siri_ride_stop.id'), index=True,
         **info("""
             The [[siri_ride_stop]] which is nearest to this vehicle location.
             This relation can be used to get all relevant details like route / ride / stop relating to this location.

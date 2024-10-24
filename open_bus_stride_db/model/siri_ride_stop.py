@@ -16,7 +16,7 @@ class SiriRideStop(Base):
             Populated in near real time from the SIRI data by [[siri-etl-process-snapshot-new-snapshots-daemon]]. 
         """)}
     )
-    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    id = sqlalchemy.Column(sqlalchemy.BigInteger, primary_key=True)
     siri_stop_id = sqlalchemy.Column(
         sqlalchemy.Integer, sqlalchemy.ForeignKey('siri_stop.id'), index=True,
         **info("The related [[siri_stop]].")
