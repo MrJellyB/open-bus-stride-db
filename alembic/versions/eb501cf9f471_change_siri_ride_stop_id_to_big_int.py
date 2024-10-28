@@ -20,10 +20,12 @@ depends_on = None
 
 
 def upgrade():
-    op.alter_column('siri_vehicle_location', 'siri_ride_stop_id', existing_type=sa.Integer, type_=sa.BigInteger)
-    op.alter_column('siri_ride_stop', 'id', existing_type=sa.Integer, type_=sa.BigInteger)
-    op.execute('ALTER SEQUENCE siri_ride_stop_id_seq AS BIGINT')
-    op.execute('SELECT setval(\'siri_ride_stop_id_seq\', 2147483431)')
+    # did it manually in DB by removing indexes and constraints first
+    pass
+    # op.alter_column('siri_vehicle_location', 'siri_ride_stop_id', existing_type=sa.Integer, type_=sa.BigInteger)
+    # op.alter_column('siri_ride_stop', 'id', existing_type=sa.Integer, type_=sa.BigInteger)
+    # op.execute('ALTER SEQUENCE siri_ride_stop_id_seq AS BIGINT')
+    # op.execute('SELECT setval(\'siri_ride_stop_id_seq\', 2147483431)')
 
 
 def downgrade():
