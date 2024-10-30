@@ -6,10 +6,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 
+SQLALCHEMY_APPLICATION_NAME = os.getenv("SQLALCHEMY_APPLICATION_NAME", "db")
+SQLALCHEMY_APPLICATION_VERSION = os.getenv("SQLALCHEMY_APPLICATION_VERSION", "-")
+
+
 engine = create_engine(
     os.environ.get('SQLALCHEMY_URL', 'postgresql://postgres:123456@localhost'),
     future=True,
-    connect_args={"options": "-c timezone=utc"},
+    connect_args={
+        "options": "-c timezone=utc",
+        "application_name": f'{SQLALCHEMY_APPLICATION_NAME} {SQLALCHEMY_APPLICATION_VERSION}'[:64],
+    },
     echo=bool(os.environ.get('SQLALCHEMY_ECHO')),
     pool_size=int(os.environ.get('SQLALCHEMY_POOL_SIZE', 10)),
     max_overflow=int(os.environ.get('SQLALCHEMY_MAX_OVERFLOW', 20)),
